@@ -4,7 +4,7 @@
 namespace transformation;
 
 
-interface Transformation {
+interface Layer {
   function getAllowedInputType();
 
   /**

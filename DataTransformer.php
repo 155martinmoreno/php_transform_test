@@ -1,10 +1,10 @@
 <?php
 
 
-use transformation\Transformation;
+use transformation\Layer;
 
 class DataTransformer {
-  private $transformations;
+  private $layers;
   private $data;
 
   /**
@@ -15,16 +15,16 @@ class DataTransformer {
     $this->data = $data;
   }
 
-  public function addTransformation(Transformation $transformation) {
-    $this->transformations[] = $transformation;
+  public function addLayer(Layer $layer) {
+    $this->layers[] = $layer;
     return $this;
   }
 
   public function transformOrThrow() {
     $resultData = $this->data;
 
-    foreach ($this->transformations as $transformation) {
-      /** @var Transformation $transformation */
+    foreach ($this->layers as $transformation) {
+      /** @var Layer $transformation */
       $allowedInputType = $transformation->getAllowedInputType();
 
       if (!$resultData instanceof $allowedInputType) {

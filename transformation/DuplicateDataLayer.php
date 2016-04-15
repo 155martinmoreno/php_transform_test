@@ -7,7 +7,7 @@ namespace transformation;
 use Data;
 use stdClass;
 
-class DuplicateTransform implements Transformation {
+class DuplicateDataLayer implements Layer {
 
   function getAllowedInputType() {
     return Data::class;
