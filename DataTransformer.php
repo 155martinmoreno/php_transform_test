@@ -1,7 +1,7 @@
 <?php
 
 
-use transformation\Layer;
+use transformation\Transformation;
 
 class DataTransformer {
   private $layers;
@@ -15,7 +15,7 @@ class DataTransformer {
     $this->data = $data;
   }
 
-  public function addLayer(Layer $layer) {
+  public function addLayer(Transformation $layer) {
     $this->layers[] = $layer;
     return $this;
   }
@@ -24,23 +24,17 @@ class DataTransformer {
     $resultData = $this->data;
 
     foreach ($this->layers as $transformation) {
-      /** @var Layer $transformation */
-      $allowedInputType = $transformation->getAllowedInputType();
+      /** @var Transformation $transformation */
+      $allowedInputType = $transformation->getAllowedDataType();
 
       if (!$resultData instanceof $allowedInputType) {
-        throw new DataTransformerException(get_class($transformation) ." cannot process type ".get_class($resultData) . ", only $allowedInputType allowed");
+        throw new DataTransformerException(get_class($transformation) . " cannot process type " . get_class($resultData) . ", only $allowedInputType allowed");
       }
 
-      $resultData = $transformation->transformInput($resultData);
+      $resultData = $transformation->transform($resultData);
 
       if (!is_object($resultData)) {
-        throw new DataTransformerException(get_class($transformation) . " returned a non-object result from transformInput()");
-      }
-
-      $resultData = $transformation->transformBusinessLogic($resultData);
-
-      if (!is_object($resultData)) {
-        throw new DataTransformerException(get_class($transformation) . " returned a non-object result from transformBusinessLogic()");
+        throw new DataTransformerException(get_class($transformation) . " returned a non-object result from transform()");
       }
 
     }
