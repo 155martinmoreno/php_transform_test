@@ -10,7 +10,7 @@ interface Transformation {
 
   /**
    * @param $data
-   * @return \stdClass
+   * @return \stdClass the transformed data
    */
   function transform($data);
 

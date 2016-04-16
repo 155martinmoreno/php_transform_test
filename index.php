@@ -20,8 +20,8 @@ class Data2
 try {
   /** @var Data $result */
   $result = (new DataTransformer(new Data()))
-    ->addLayer(new DuplicateDataTransformation())
-    ->addLayer(new DuplicateDataTransformation())
+    ->addTransformation(new DuplicateDataTransformation())
+    ->addTransformation(new DuplicateDataTransformation())
     ->transformOrThrow();
 
   echo $result->dataStr;

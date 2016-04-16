@@ -4,7 +4,7 @@
 use transformation\Transformation;
 
 class DataTransformer {
-  private $layers;
+  private $transformations;
   private $data;
 
   /**
@@ -15,15 +15,15 @@ class DataTransformer {
     $this->data = $data;
   }
 
-  public function addLayer(Transformation $layer) {
-    $this->layers[] = $layer;
+  public function addTransformation(Transformation $transformation) {
+    $this->transformations[] = $transformation;
     return $this;
   }
 
   public function transformOrThrow() {
     $resultData = $this->data;
 
-    foreach ($this->layers as $transformation) {
+    foreach ($this->transformations as $transformation) {
       /** @var Transformation $transformation */
       $allowedInputType = $transformation->getAllowedDataType();
 
