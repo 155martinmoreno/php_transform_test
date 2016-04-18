@@ -10,7 +10,7 @@ use DataTransformationTest\DataTransformerException;
 const DATA_STR = "Hola-";
 
 
-class Data2 {
+class Data2 extends \stdClass{
 }
 
 try {
