@@ -1,7 +1,9 @@
 <?php
 
+namespace DataTransformationTest;
 
-use transformation\Transformation;
+use DataTransformationTest\transformation\Transformation;
+use stdClass;
 
 class DataTransformer {
   private $transformations;

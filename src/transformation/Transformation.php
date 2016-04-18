@@ -1,7 +1,7 @@
 <?php
 
 
-namespace transformation;
+namespace DataTransformationTest\transformation;
 
 
 interface Transformation {
