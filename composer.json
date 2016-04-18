@@ -2,7 +2,8 @@
   "autoload": {
     "psr-4": {
       "DataTransformationTest\\": "src/",
-      "DataTransformationTest\\transformation\\": "src/transformation/"
+      "DataTransformationTest\\transformation\\": "src/transformation/",
+      "DataTransformationTestDemo\\": "demo/"
     }
   },
   "require-dev": {
